@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import TodoBoard from "./components/TodoBoard";
 import api from "./utils/api";
 import colors from "./styles/colors";

@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 import colors from "../styles/colors";
 
 const TodoBoard = ({todoList, deleteTask, completeTask}) => {
-  // Get today's date formatted nicely
+  
   const getTodaysDate = () => {
     const today = new Date();
     const options = { 
