@@ -239,6 +239,30 @@ body {
   opacity: 0.7;
 }
 
+/* Button Container Styles */
+.button-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.button-box span {
+  font-size: 14px;
+  text-align: center;
+}
+
+.button-box a {
+  color: #000000;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.button-box a:hover {
+  color: #666666;
+}
+
 @keyframes slideIn {
   from {
     transform: translateY(-10px);

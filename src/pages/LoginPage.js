@@ -34,10 +34,9 @@ const LoginPage = () => {
 
   return (
     <div className="display-center">
-      <div>
-        <ErrorMessage message={error} onClose={() => setError("")} />
-      </div>
-      <Form className="login-box" onSubmit={handleLogin}>
+      <ErrorMessage message={error} onClose={() => setError("")} />
+      <div className="form-container">
+        <Form onSubmit={handleLogin}>
         <h1>Login</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -56,7 +55,8 @@ const LoginPage = () => {
             No account? <Link to="/register">Sign Up</Link>    
           </span>
         </div>
-      </Form>
+              </Form>
+      </div>
     </div>
   );
 };
