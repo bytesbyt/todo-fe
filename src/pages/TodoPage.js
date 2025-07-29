@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import TodoBoard from "../components/TodoBoard";
 import api from "../utils/api";
@@ -6,6 +7,7 @@ import api from "../utils/api";
 function TodoPage() {
   const [todoList, setTodoList] = useState([]);
   const [todoValue, setTodoValue] = useState("");
+  const navigate = useNavigate();
 
   const getTasks=async() => {
     const response = await api.get("/tasks")
@@ -68,6 +70,13 @@ function TodoPage() {
     }
   };
 
+  const handleLogout = () => {
+
+    sessionStorage.removeItem("token");
+    delete api.defaults.headers["authorization"];
+    navigate("/login");
+  };
+
   useEffect(()=>{
     getTasks();
   },[])
@@ -75,6 +84,11 @@ function TodoPage() {
   return (
     <div className="page-container">
       <div className="main-container">
+        <div className="logout-button-container" style={{marginBottom: '20px'}}>
+          <button onClick={handleLogout} className="form-button logout-top-button">
+            Logout
+          </button>
+        </div>
         <div className="input-container">
           <input
             type="text"

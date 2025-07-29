@@ -23,7 +23,6 @@ const RegisterPage = () => {
       }else{
         throw new Error(response.data.error)
       }
-      console.log("eee",response);
     }catch(error){
       setError(error.message)
     }
@@ -33,6 +32,7 @@ const RegisterPage = () => {
     <div className="page-container">
       <div className="form-wrapper">
         <ErrorMessage message={error} onClose={() => setError("")} />
+
         <div className="form-container">
           <h1 className="form-title">Sign Up</h1>
           <form onSubmit={handleSubmit}>

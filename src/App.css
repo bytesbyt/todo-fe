@@ -292,6 +292,10 @@ body {
     padding: 15px;
   }
   
+  .logout-button-container {
+    max-width: 360px;
+  }
+  
   .form-container {
     max-width: 360px;
     padding: 35px 25px;
@@ -307,6 +311,17 @@ body {
   .form-wrapper {
     padding: 10px;
     min-height: 70vh;
+  }
+
+  .logout-button-container {
+    max-width: 340px;
+  }
+
+  .logout-top-button {
+    height: 36px !important;
+    font-size: 12px !important;
+    padding: 0 16px !important;
+    min-width: 80px;
   }
 
   .form-container {
@@ -359,6 +374,17 @@ body {
     min-height: 60vh;
   }
 
+  .logout-button-container {
+    max-width: 300px;
+  }
+
+  .logout-top-button {
+    height: 34px !important;
+    font-size: 11px !important;
+    padding: 0 12px !important;
+    min-width: 70px;
+  }
+
   .form-container {
     max-width: 300px;
     padding: 25px 15px;
@@ -401,6 +427,10 @@ body {
     padding: 25px;
   }
 
+  .logout-button-container {
+    max-width: 480px;
+  }
+
   .form-container {
     max-width: 480px;
     padding: 35px;
@@ -432,4 +462,22 @@ body {
   .form-container {
     max-width: 420px;
   }
+} 
+
+/* Logout Button Container - positions logout button above form */
+.logout-button-container {
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logout-top-button {
+  width: auto !important;
+  height: 40px !important;
+  padding: 0 20px !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+  min-width: 100px;
 } 
