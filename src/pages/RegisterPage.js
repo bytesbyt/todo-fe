@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import api from "../utils/api";
 import ErrorMessage from "../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +10,6 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const [secPassword, setSecPassword] = useState("");
   const [error, setError] = useState("");
-  
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -22,7 +19,6 @@ const RegisterPage = () => {
       }
       const response = await api.post('/user', {name, email, password});
       if(response.status === 200){
-
         navigate("/login");
       }else{
         throw new Error(response.data.error)
@@ -34,38 +30,70 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="display-center">
-      <div>
+    <div className="page-container">
+      <div className="form-wrapper">
         <ErrorMessage message={error} onClose={() => setError("")} />
+        <div className="form-container">
+          <h1 className="form-title">Sign Up</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label className="form-label">Name</label>
+              <input
+                type="text"
+                placeholder="Name"
+                className="form-input"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Email Address</label>
+              <input
+                type="email"
+                placeholder="Enter email"
+                className="form-input"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                className="form-input"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Confirm Password</label>
+              <input
+                type="password"
+                placeholder="re-enter the password"
+                className="form-input"
+                value={secPassword}
+                onChange={(event) => setSecPassword(event.target.value)}
+                required
+              />
+            </div>
+
+            <button type="submit" className="form-button">
+              Register
+            </button>
+
+            <div className="form-footer">
+              Already have an account? <a href="/login">Login</a>
+            </div>
+          </form>
+        </div>
       </div>
-        <Form className="login-box" onSubmit={handleSubmit}>
-        
-          <h1>Sign Up</h1>
-        <Form.Group className="mb-3" controlId="formName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="string" placeholder="Name" onChange={(event)=>setName(event.target.value)}/>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" onChange={(event)=>setEmail(event.target.value)} />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" onChange={(event)=>setPassword(event.target.value)} />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formConfirmPassword">
-          <Form.Label>re-enter the password</Form.Label>
-          <Form.Control type="password" placeholder="re-enter the password" onChange={(event)=>setSecPassword(event.target.value)} />
-        </Form.Group>
-
-        <Button className="button-primary" type="submit">
-          Register
-        </Button>
-      </Form>
-    
     </div>
   );
 };

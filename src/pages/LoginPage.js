@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import api from "../utils/api";
 import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
@@ -32,35 +30,49 @@ const LoginPage = () => {
         }
     }
 
+    return (
+        <div className="page-container">
+            <div className="form-wrapper">
+                <ErrorMessage message={error} onClose={() => setError("")} />
+                <div className="form-container">
+                    <h1 className="form-title">Login</h1>
+                    <form onSubmit={handleLogin}>
+                        <div className="form-group">
+                            <label className="form-label">Email Address</label>
+                            <input
+                                type="email"
+                                placeholder="Enter email"
+                                className="form-input"
+                                value={email}
+                                onChange={(event) => setEmail(event.target.value)}
+                                required
+                            />
+                        </div>
 
+                        <div className="form-group">
+                            <label className="form-label">Password</label>
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                className="form-input"
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
+                                required
+                            />
+                        </div>
 
-  return (
-    <div className="display-center">
-      <ErrorMessage message={error} onClose={() => setError("")} />
-      <div className="form-container">
-        <Form onSubmit={handleLogin}>
-        <h1>Login</h1>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" onChange={(event)=>setEmail(event.target.value)}/>
-        </Form.Group>
+                        <button type="submit" className="form-button">
+                            Login
+                        </button>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" onChange={(event)=>setPassword(event.target.value)}/>
-        </Form.Group>
-        <div className="button-box">
-          <Button type="submit" className="button-primary">
-            Login
-          </Button>
-          <span>
-            No account? <Link to="/register">Sign Up</Link>    
-          </span>
+                        <div className="form-footer">
+                            No account? <Link to="/register">Sign Up</Link>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-              </Form>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default LoginPage;
