@@ -24,7 +24,7 @@ const LoginPage = ({user, setUser}) => {
             }
         }catch(error){
             console.log("Login error:", error);
-            // API returns {status: 'fail', message: 'error message'}
+
             setError(error.message || "Login failed. Please try again.");
         }
     }

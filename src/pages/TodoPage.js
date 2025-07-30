@@ -14,6 +14,9 @@ function TodoPage() {
     console.log("fff",response);
     setTodoList(response.data.data);
   };
+  useEffect(()=>{
+    getTasks();
+  },[])
 
   const addTask=async()=>{
     if (!todoValue.trim()) return;
@@ -71,15 +74,12 @@ function TodoPage() {
   };
 
   const handleLogout = () => {
-
     sessionStorage.removeItem("token");
     delete api.defaults.headers["authorization"];
     navigate("/login");
   };
 
-  useEffect(()=>{
-    getTasks();
-  },[])
+  
 
   return (
     <div className="page-container">
