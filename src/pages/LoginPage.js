@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import api from "../utils/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
 
-const LoginPage = () => {
+const LoginPage = ({user, setUser}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const [user, setUser] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = async (event) => {
@@ -28,6 +27,9 @@ const LoginPage = () => {
             // API returns {status: 'fail', message: 'error message'}
             setError(error.message || "Login failed. Please try again.");
         }
+    }
+    if(user){
+        return <Navigate to="/" />
     }
 
     return (
