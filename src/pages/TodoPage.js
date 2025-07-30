@@ -4,7 +4,7 @@ import "../App.css";
 import TodoBoard from "../components/TodoBoard";
 import api from "../utils/api";
 
-function TodoPage() {
+function TodoPage({ setUser }) {
   const [todoList, setTodoList] = useState([]);
   const [todoValue, setTodoValue] = useState("");
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ function TodoPage() {
     }
   }
 
-  const handleKeyPress = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       addTask();
     }
@@ -76,6 +76,7 @@ function TodoPage() {
   const handleLogout = () => {
     sessionStorage.removeItem("token");
     delete api.defaults.headers["authorization"];
+    setUser(null);
     navigate("/login");
   };
 
@@ -96,7 +97,7 @@ function TodoPage() {
             className="input-field"
             value={todoValue}
             onChange={(e)=>setTodoValue(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown}
           />
           <button 
             className="button-primary"
