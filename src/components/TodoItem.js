@@ -137,9 +137,11 @@ const TodoItem = ({item, index, deleteTask, completeTask}) => {
       <div style={taskContentStyle}>
         {item.task}
       </div>
-      <div style={taskContentStyle}>
-        by {item.author.name}
-      </div>
+      {item.author && (
+        <div style={taskContentStyle}>
+          by {item.author.name}
+        </div>
+      )}
 
       <div 
         className="action-buttons"
